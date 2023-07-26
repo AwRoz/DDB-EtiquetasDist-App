@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generar Etiquetas - Rutas</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;700&family=Roboto+Condensed:wght@400;700&family=Roboto+Mono:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./styles/styles.css">
+</head>
+<body>
+    <div class="mainContainer">
+        <section class="agregarDocumentosCola">
+                <h3 class="componentTitle">Ingresar documentos a la cola</h3>
+                <div class="docTypeContainer">
+                    <label for="FE" class='docTypeOption'>
+                        <input type="radio" name="docType" id="FE" value="FE">
+                        <span>FE</span>
+                    </label>
+                    <label for="REM" class='docTypeOption'>
+                        <input type="radio" name="docType" id="REM" value="REM">
+                        <span>REM</span>
+                    </label>
+                    <label for="PED" class='docTypeOption'>
+                        <input type="radio" name="docType" id="PED" value="PED">
+                        <span>PED</span>
+                    </label>
+                </div>
+                <input type="text" placeholder="123456" id="numeroDocumento" class="documentInput" min="0" maxlength="8" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+                <button class="primaryBtn" id="agregaDocumentosCola">Agregar a la cola</button>
+        </section>
+
+
+        <section class="colaContainer">
+            <div class="colaHeader">
+                <h2 class="nombreCliente">CLINICA UNIVERSIDAD DE LA SABANA</h2>
+                <h3 class="domicilioEnvio metaData">Cr 123 # 45 - 78 Sur - Bodega piso 1</h3>
+                <h3 class="ciudadMunicipio metaData">Bogota, Cundinamarca</h3>
+            </div>
+            <ul class="colaDocumentos">
+                <li class="documentoEnCola">
+                    <p>PED/123456</p>
+                    <span class="deleteItemBtn">Eliminar</span>
+                </li>
+                <li class="documentoEnCola">
+                    <p>FE/99540</p>
+                    <span class="deleteItemBtn">Eliminar</span>
+                </li>
+            </ul>
+        </section>
+
+        <section class="contadores">
+            <div class="contadorContainer">
+                <p><span>🧊 </span>Cantidad Neveras</p>
+                <div class="contador">
+                    <button onclick="decreaseValue('cantNeveras')">-</button>
+                    <input type="text" id="cantNeveras" placeholder="0" min="0" maxlength="3" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+                    <button onclick="increaseValue('cantNeveras')">+</button>
+                </div>
+            </div>
+            <div class="contadorContainer">
+                <p><span>📦 </span>Cantidad Cajas</p>
+                <div class="contador">
+                    <button onclick="decreaseValue('cantCajas')">-</button>
+                    <input type="text" id="cantCajas" placeholder="0" min="0" maxlength="3" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+                    <button onclick="increaseValue('cantCajas')">+</button>
+                </div>
+            </div>
+            <section class="rangosContainer">
+                <h3 class="componentTitle" onclick="hideShowRangos()">Personalizar Rangos <span>▼</span></h3>
+                <div class="disabled" id="desdeHasta">
+                    <div class="contadorContainer">
+                        <p><span>🏳️ </span>Desde</p>
+                        <div class="contador">
+                            <button onclick="decreaseValue('desde')">-</button>
+                            <input type="text" id="desde" placeholder="0" min="0" maxlength="3" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+                            <button onclick="increaseValue('desde')">+</button>
+                        </div>
+                    </div>
+                    <div class="contadorContainer">
+                        <p><span>🏁 </span>Hasta</p>
+                        <div class="contador">
+                            <button onclick="decreaseValue('hasta')">-</button>
+                            <input type="text" id="hasta" placeholder="0" min="0" maxlength="3" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+                            <button onclick="increaseValue('hasta')">+</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </section>
+        
+    </div>
+    <section class="generarEtiquetasBtnContainer">
+        <button class="primaryBtn generarEtiquetasBtn">Generar etiquetas</button>
+    </section>
+    <script src="../src/index.js"></script>
+</body>
+</html>
