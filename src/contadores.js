@@ -14,10 +14,15 @@ function increaseValue(inputId){
         input.value = parseInt(input.value) + 1
     }
 }
-
+//oculta o muestra la personalizacion de rangos
 function hideShowRangos(){
     const bloque = document.querySelector('#desdeHasta')
     bloque.classList.toggle('disabled')
 }
 
-export { decreaseValue, increaseValue, hideShowRangos }
+function deleteItemQueue(itemId){
+    console.log(itemId);
+    document.getElementById(itemId).remove()
+}
+
+export { decreaseValue, increaseValue, hideShowRangos, deleteItemQueue }
