@@ -54,21 +54,26 @@
             <div class="contadorContainer">
                 <p><span>🧊 </span>Cantidad Neveras</p>
                 <div class="contador">
-                    <button onclick="decreaseValue('cantNeveras')">-</button>
-                    <input type="text" id="cantNeveras" placeholder="0" min="0" maxlength="3" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
-                    <button onclick="increaseValue('cantNeveras')">+</button>
+                    <button class="decreaseValue">-</button>
+                    <input class="contadorInput" type="text" id="cantNeveras" placeholder="0" min="0" maxlength="3" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+                    <button class="increaseValue">+</button>
                 </div>
             </div>
             <div class="contadorContainer">
                 <p><span>📦 </span>Cantidad Cajas</p>
-                <div class="contador">
+                <!-- <div class="contador">
                     <button onclick="decreaseValue('cantCajas')">-</button>
                     <input type="text" id="cantCajas" placeholder="0" min="0" maxlength="3" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
                     <button onclick="increaseValue('cantCajas')">+</button>
+                </div> -->
+                <div class="contador">
+                    <button class="decreaseValue">-</button>
+                    <input class="contadorInput" type="text" id="cantCajas" placeholder="0" min="0" maxlength="3" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+                    <button class="increaseValue">+</button>
                 </div>
             </div>
             <section class="rangosContainer">
-                <h3 class="componentTitle" onclick="hideShowRangos()">Personalizar Rangos <span>▼</span></h3>
+                <h3 class="componentTitle desdeHastaTitle">Personalizar Rangos <span>▼</span></h3>
                 <div class="disabled" id="desdeHasta">
                     <div class="contadorContainer">
                         <p><span>🏳️ </span>Desde</p>
