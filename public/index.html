@@ -39,9 +39,9 @@
                 <h3 class="ciudadMunicipio metaData">Bogota, Cundinamarca</h3>
             </div>
             <ul class="colaDocumentos">
-                <li class="documentoEnCola">
+                <li class="documentoEnCola" id="PED123456">
                     <p>PED/123456</p>
-                    <span class="deleteItemBtn">Eliminar</span>
+                    <span class="deleteItemBtn" onclick="deleteItemQueue('PED123456')">Eliminar</span>
                 </li>
                 <li class="documentoEnCola">
                     <p>FE/99540</p>
@@ -94,6 +94,6 @@
     <section class="generarEtiquetasBtnContainer">
         <button class="primaryBtn generarEtiquetasBtn">Generar etiquetas</button>
     </section>
-    <script src="../src/index.js"></script>
+    <script src="../dist/main.js"></script>
 </body>
 </html>

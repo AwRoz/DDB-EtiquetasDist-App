@@ -1,0 +1,21 @@
+{
+  "name": "etiquetasapp",
+  "version": "1.0.0",
+  "description": "app para la impresion de etiquetas en DDB",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build":"webpack --mode=production",
+    "dev":"webpack --mode=development"
+  },
+  "keywords": [
+    "DDB",
+    "etiquetas"
+  ],
+  "author": "awroz",
+  "license": "ISC",
+  "devDependencies": {
+    "webpack": "^5.88.2",
+    "webpack-cli": "^5.1.4"
+  }
+}
