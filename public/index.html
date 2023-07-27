@@ -41,11 +41,11 @@
             <ul class="colaDocumentos">
                 <li class="documentoEnCola" id="PED123456">
                     <p>PED/123456</p>
-                    <span class="deleteItemBtn" onclick="deleteItemQueue('PED123456')">Eliminar</span>
+                    <span class="deleteItemBtn" onclick="deleteItemBtn(event)">Eliminar</span>
                 </li>
                 <li class="documentoEnCola">
                     <p>FE/99540</p>
-                    <span class="deleteItemBtn">Eliminar</span>
+                    <span class="deleteItemBtn" onclick="deleteItemBtn(event)">Eliminar</span>
                 </li>
             </ul>
         </section>
@@ -78,17 +78,17 @@
                     <div class="contadorContainer">
                         <p><span>🏳️ </span>Desde</p>
                         <div class="contador">
-                            <button onclick="decreaseValue('desde')">-</button>
-                            <input type="text" id="desde" placeholder="0" min="0" maxlength="3" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
-                            <button onclick="increaseValue('desde')">+</button>
+                            <button class="decreaseValue">-</button>
+                            <input class="contadorInput" type="text" id="desde" placeholder="0" min="0" maxlength="3" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+                            <button class="increaseValue">+</button>
                         </div>
                     </div>
                     <div class="contadorContainer">
                         <p><span>🏁 </span>Hasta</p>
                         <div class="contador">
-                            <button onclick="decreaseValue('hasta')">-</button>
-                            <input type="text" id="hasta" placeholder="0" min="0" maxlength="3" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
-                            <button onclick="increaseValue('hasta')">+</button>
+                            <button class="decreaseValue">-</button>
+                            <input class="contadorInput" type="text" id="hasta" placeholder="0" min="0" maxlength="3" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+                            <button class="increaseValue">+</button>
                         </div>
                     </div>
                 </div>
@@ -100,5 +100,6 @@
         <button class="primaryBtn generarEtiquetasBtn">Generar etiquetas</button>
     </section>
     <script src="../dist/main.js"></script>
+    <script src="../src/eliminarItemCola.js"></script>
 </body>
 </html>

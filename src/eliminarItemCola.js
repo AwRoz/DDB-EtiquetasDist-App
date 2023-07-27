@@ -1,7 +1,4 @@
-function deleteItemQueue(itemId){
-    console.log(itemId);
-    const item = document.querySelector.querySelector(itemId)
-    console.log(item)
-}
-
-export default deleteItemQueue
+function deleteItemBtn(event){
+    parent = event.target.parentNode
+    parent.remove()
+  }
