@@ -148,6 +148,7 @@ input[type='radio']{
 }
 .documentInput::placeholder{
     color: var(--midGray);
+    opacity: 50%;
 }
 .documentInput:focus::placeholder{
     color: transparent;

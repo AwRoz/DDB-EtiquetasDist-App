@@ -1,4 +1,5 @@
 import { decreaseValue, increaseValue } from './contadores'
+import { createItemQueue } from './dynamicComponents'
 
 //Agregar documento a la cola
 const colaContainer = document.querySelector('.colaDocumentos')
@@ -15,20 +16,12 @@ const addToQueueBtn = document.querySelector('#agregaDocumentosCola')
                 }
               })
         if(documento.value && tipoDocValue){
-          const newDoc = document.createElement('li')
-                newDoc.classList.add('documentoEnCola')
-          const newTitle = document.createElement('p')
-                newTitle.innerHTML = `${tipoDocValue}/${documento.value}`
-          const newDeleteBtn = document.createElement('span')
-                newDeleteBtn.classList.add('deleteItemBtn')
-                newDeleteBtn.setAttribute('onclick', 'deleteItemBtn(event)')
-                newDeleteBtn.innerHTML = 'Eliminar'
-          newDoc.appendChild(newTitle)
-          newDoc.appendChild(newDeleteBtn)
-          colaContainer.appendChild(newDoc)
+            const newDoc = createItemQueue(tipoDocValue, documento.value)
+            colaContainer.appendChild(newDoc)
           
-          documento.value = ''
-          tipoDocContainer.checked = false
+            documento.value = ''
+            tipoDocContainer.checked = false
+            documento.focus()
         }
       })
 
