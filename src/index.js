@@ -1,5 +1,5 @@
 import { decreaseValue, increaseValue } from './contadores'
-import { addToQueueHandler } from './dynamicComponents'
+import { addToQueueHandler } from './handlers'
 
 //Agregar documento a la cola
 document.querySelector('#agregaDocumentosColaBtn')
