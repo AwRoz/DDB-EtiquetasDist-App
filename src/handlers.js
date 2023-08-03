@@ -8,9 +8,10 @@ async function addToQueueHandler(){
     const docType = document.querySelector('.docTypeOption input[type="radio"]:checked')
     if(doc.value && docType){
         const facturas = await getFacturas(doc.value,docType.value)
-        console.log(facturas);
-        const newDoc = createItemQueue(docType.value,doc.value)
-        colaContainer.appendChild(newDoc)
+        if(facturas){
+            const newDoc = createItemQueue(docType.value,doc.value)
+            colaContainer.appendChild(newDoc)
+        }
         docType.checked = false
         doc.value = ''
         doc.focus()
