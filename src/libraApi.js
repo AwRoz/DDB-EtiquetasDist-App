@@ -6,13 +6,16 @@ async function fetchData(apiUrl){
         if (res.status === 404) {
             alert(`Documento ingresado no existe`)
             throw new Error('Error en la peticion')
+        }else{
+            alert(`Error interno del servidor`)
+            throw new Error('Error en la peticion')
         }
     }
     const data = await res.json()
     return data
 }
 
-async function getFacturas(documento,serieDoc){
+async function getDocumento(documento,serieDoc){
     try{
         const factura = await fetchData(`${mainEndpoint}?documento=${documento}&serie=${serieDoc}`)
         return factura
@@ -22,4 +25,4 @@ async function getFacturas(documento,serieDoc){
     }
 }
 
-export { getFacturas }
+export { getDocumento}
