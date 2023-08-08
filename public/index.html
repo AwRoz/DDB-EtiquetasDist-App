@@ -33,21 +33,6 @@
 
 
         <section class="colaContainer">
-            <div class="colaHeader">
-                <h2 class="nombreCliente">CLINICA UNIVERSIDAD DE LA SABANA</h2>
-                <h3 class="domicilioEnvio metaData">Cr 123 # 45 - 78 Sur - Bodega piso 1</h3>
-                <h3 class="ciudadMunicipio metaData">Bogota, Cundinamarca</h3>
-            </div>
-            <ul class="colaDocumentos">
-                <li class="documentoEnCola" id="PED123456">
-                    <p>PED/123456</p>
-                    <span class="deleteItemBtn" onclick="deleteItemBtn(event)">Eliminar</span>
-                </li>
-                <li class="documentoEnCola">
-                    <p>FE/99540</p>
-                    <span class="deleteItemBtn" onclick="deleteItemBtn(event)">Eliminar</span>
-                </li>
-            </ul>
         </section>
 
         <section class="contadores">
@@ -61,11 +46,6 @@
             </div>
             <div class="contadorContainer">
                 <p><span>📦 </span>Cantidad Cajas</p>
-                <!-- <div class="contador">
-                    <button onclick="decreaseValue('cantCajas')">-</button>
-                    <input type="text" id="cantCajas" placeholder="0" min="0" maxlength="3" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
-                    <button onclick="increaseValue('cantCajas')">+</button>
-                </div> -->
                 <div class="contador">
                     <button class="decreaseValue">-</button>
                     <input class="contadorInput" type="text" id="cantCajas" placeholder="0" min="0" maxlength="3" oninput="this.value = this.value.replace(/[^0-9]/g, '')">

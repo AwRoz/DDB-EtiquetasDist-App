@@ -43,4 +43,11 @@ function assignClientToQueue(docData){
     return colaHeader
 }
 
-export {createItemQueue, assignClientToQueue}
+//funcion para crear el contenedor de cada uno de los items de la cola
+function queueContainer(){
+    const container = document.createElement('ul')
+    container.classList.add('colaDocumentos')
+    return container
+}
+
+export {createItemQueue, assignClientToQueue, queueContainer}

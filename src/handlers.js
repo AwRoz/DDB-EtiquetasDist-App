@@ -1,4 +1,4 @@
-import { createItemQueue, assignClientToQueue } from './dynamicComponents'
+import { createItemQueue, assignClientToQueue, queueContainer } from './dynamicComponents'
 import { getDocumento } from './libraApi'
 
 let clienteDomicilio = null
@@ -7,7 +7,6 @@ let clienteColaID
 //Event handler to add a new document to the queue
 async function addToQueueHandler(){
     const colaContainer = document.querySelector('.colaContainer')
-    const colaDocsContainer = document.querySelector('.colaDocumentos')
     const doc = document.querySelector('#numeroDocumento')
     const docType = document.querySelector('.docTypeOption input[type="radio"]:checked')
     
@@ -24,8 +23,12 @@ async function addToQueueHandler(){
                 if(!clienteDomicilio){
                     const colaHeader = assignClientToQueue(documento[0])
                     colaContainer.appendChild(colaHeader)
+
+                    const listaDocsContainer = queueContainer()
+                    colaContainer.appendChild(listaDocsContainer)
                 }
                 //se agega el nuevo documento a la cola
+                const colaDocsContainer = document.querySelector('.colaDocumentos')
                 const newDoc = createItemQueue(docType.value,doc.value)
                 colaDocsContainer.appendChild(newDoc)
                 //se asigna el cliente/domicilio a la cola
