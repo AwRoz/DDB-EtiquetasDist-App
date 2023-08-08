@@ -16,12 +16,16 @@ async function addToQueueHandler(){
         //si el documento existe
         if(documento){
             //se crea un ID para el cliente/domicilio obtenido de la consulta a la API
-            clienteColaID = `${documento[0][0]}-${documento[0][8]}`
+            if (docType.value === 'PED'){
+                clienteColaID = `${documento[0][1]}-${documento[0][6]}`
+            }else{
+                clienteColaID = `${documento[0][0]}-${documento[0][8]}`
+            }
             console.log(clienteColaID,clienteDomicilio);
             //valida si no hay cliente asignado a la cola o si el cliente/domicilio coincide con el existente
             if(!clienteDomicilio || clienteDomicilio === clienteColaID){
                 if(!clienteDomicilio){
-                    const colaHeader = assignClientToQueue(documento[0])
+                    const colaHeader = assignClientToQueue(documento[0],docType.value)
                     colaContainer.appendChild(colaHeader)
 
                     const listaDocsContainer = queueContainer()
@@ -43,4 +47,10 @@ async function addToQueueHandler(){
         doc.focus()
     }
 }
-export {addToQueueHandler}
+
+async function generarEtiquetas(){
+    console.log(`hola`);
+}
+
+
+export {addToQueueHandler, generarEtiquetas}

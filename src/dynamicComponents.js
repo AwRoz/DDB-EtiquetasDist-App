@@ -18,23 +18,23 @@ function createItemQueue(docType,docNumber){
 }
 
 //funcion para crear el header de la cola
-function assignClientToQueue(docData){
+function assignClientToQueue(docData, serie){
     const colaHeader = document.createElement('div')
     colaHeader.classList.add('colaHeader')
 
     const nombreCliente = document.createElement('h2')
     nombreCliente.classList.add('nombreCliente')
-    nombreCliente.innerText = docData[1]
+    nombreCliente.innerText = (serie === 'PED') ?  docData[2] : docData[1]  
 
     const domicilioEnvio = document.createElement('h3')
     domicilioEnvio.classList.add('domicilioEnvio')
     domicilioEnvio.classList.add('metaData')
-    domicilioEnvio.innerText = docData[9]
+    domicilioEnvio.innerText = (serie === 'PED') ?  docData[7] : docData[9]
 
     const ciudadMunicipio = document.createElement('h3')
     ciudadMunicipio.classList.add('ciudadMunicipio')
     ciudadMunicipio.classList.add('metaData')
-    ciudadMunicipio.innerText = `${docData[10]}, ${docData[11]}`
+    ciudadMunicipio.innerText =  (serie === 'PED') ? `${docData[8]}, ${docData[9]}` : `${docData[10]}, ${docData[11]}`
 
     colaHeader.appendChild(nombreCliente)
     colaHeader.appendChild(domicilioEnvio)
