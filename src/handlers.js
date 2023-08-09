@@ -1,8 +1,9 @@
-import { createItemQueue, assignClientToQueue, queueContainer } from './dynamicComponents'
+import { createItemQueue, assignClientToQueue, queueContainer, generarEtiquetas } from './dynamicComponents'
 import { getDocumento } from './libraApi'
 
 let clienteDomicilio = null
 let clienteColaID
+let colaHeaderData = []
 
 //Event handler to add a new document to the queue
 async function addToQueueHandler(){
@@ -21,13 +22,23 @@ async function addToQueueHandler(){
             }else{
                 clienteColaID = `${documento[0][0]}-${documento[0][8]}`
             }
-            console.log(clienteColaID,clienteDomicilio);
             //valida si no hay cliente asignado a la cola o si el cliente/domicilio coincide con el existente
             if(!clienteDomicilio || clienteDomicilio === clienteColaID){
                 if(!clienteDomicilio){
                     const colaHeader = assignClientToQueue(documento[0],docType.value)
                     colaContainer.appendChild(colaHeader)
-
+                    console.log(docType.value);
+                    if(docType.value === 'PED' || docType.value === 'CON'){
+                        colaHeaderData.push(documento[0][2])
+                        colaHeaderData.push(documento[0][7])
+                        colaHeaderData.push(documento[0][8])
+                        colaHeaderData.push(documento[0][9])
+                    }else{
+                        colaHeaderData.push(documento[0][1])
+                        colaHeaderData.push(documento[0][9])
+                        colaHeaderData.push(documento[0][10])
+                        colaHeaderData.push(documento[0][11])
+                    }
                     const listaDocsContainer = queueContainer()
                     colaContainer.appendChild(listaDocsContainer)
                 }
@@ -48,9 +59,32 @@ async function addToQueueHandler(){
     }
 }
 
-async function generarEtiquetas(){
-    console.log(`hola`);
+//Alistar las etiquetas
+async function alistarEtiquetas(){
+    //get the list of documents in the queue
+    const colaDocs = document.querySelectorAll('.documentoEnCola')
+    const mainContainer = document.querySelector('.mainContainer')
+    const btnContainer = document.querySelector('.generarEtiquetasBtnContainer')
+    const body = document.body
+
+    //remove the elements from the DOM
+    //get the list of IDs of the documents in the queue
+    let Ids = []
+    colaDocs.forEach(doc => {Ids.push(doc.id)})
+
+    mainContainer.classList.toggle('disabled')
+    btnContainer.classList.toggle('disabled')
+    
+    const etiquetas = generarEtiquetas(Ids,colaHeaderData)
+    console.log(etiquetas);
+    body.innerHTML = etiquetas //al insertar en el body borra el main container, por lo que este desaparece. MODIFICAR!!!
+    window.print()
+
+    mainContainer.classList.toggle('disabled')
+    btnContainer.classList.toggle('disabled')
 }
 
 
-export {addToQueueHandler, generarEtiquetas}
+
+
+export {addToQueueHandler, alistarEtiquetas}

@@ -2,6 +2,7 @@
 function createItemQueue(docType,docNumber){
     const newItem = document.createElement('li')
     newItem.classList.add('documentoEnCola')
+    newItem.id = `${docType}/${docNumber}`
 
     const newTitle = document.createElement('p')
     newTitle.innerText = `${docType}/${docNumber}`
@@ -50,4 +51,39 @@ function queueContainer(){
     return container
 }
 
-export {createItemQueue, assignClientToQueue, queueContainer}
+//generarEtiquetas
+function generarEtiquetas(ids,headerData){
+    console.log(ids, headerData)
+    const docs = ids.join(', ')
+    console.log(docs);
+    const nuevaEtiqueta =  etiqueta(headerData,ids)
+    return nuevaEtiqueta
+}
+
+
+function etiqueta(header,docs){
+    return `
+<div class="etiqueta">
+    <section class="etiqueta__header">
+        <div class="etiqueta__info">
+            <h2 class="etiqueta__info__cliente nombreCliente">${header[0]}</h2>
+            <p class="etiqueta__info__direccion metaData">${header[1]}</p>
+            <p class="etiqueta__info__ciudad metaData">${header[2]}, ${header[3]}</p>
+        </div>
+        <span class="etiqueta__logoDdb"></span>
+    </section>
+    <section class="etiqueta__data">
+        <h3>DOCUMENTOS:</h3>
+        <p>${docs}</p>
+    </section>
+    <section class="etiqueta__cajas">
+        <h1 class="nevera-caja">Nevera</h1>
+        <p>
+            <span class="nevera-caja__desde">1</span> de 
+            <span class="nevera-caja__hasta">5</span>
+        </p>
+    </section>
+</div>`
+}
+
+export {createItemQueue, assignClientToQueue, queueContainer, generarEtiquetas}

@@ -1,5 +1,5 @@
 import { decreaseValue, increaseValue } from './contadores'
-import { addToQueueHandler, generarEtiquetas } from './handlers'
+import { addToQueueHandler, alistarEtiquetas } from './handlers'
 
 //Agregar documento a la cola
 document.querySelector('#agregaDocumentosColaBtn')
@@ -22,4 +22,4 @@ document.querySelector('.desdeHastaTitle')
       })
 
 document.querySelector('.generarEtiquetasBtn')
-.addEventListener('click',generarEtiquetas)
+.addEventListener('click',alistarEtiquetas)
