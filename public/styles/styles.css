@@ -294,16 +294,22 @@ input[type='radio']{
 
 
 
-/* estilos correspondientes a las etiquetas */
+
+
+
+
+/* estilos correspondientes a las etiquetas _________________________*/
 
 .etiqueta{
     max-width: 37.7rem;
     max-height: 300px;
+    min-height: 300px;
     display: flex;
     flex-direction: column;
     gap: 20px;
     padding: 10px;
     margin-bottom: 10px;
+    overflow: hidden;
 }
 .etiqueta__header{
     display: flex;
@@ -347,7 +353,6 @@ input[type='radio']{
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    gap: 2rem;
 }
 .etiqueta__cajas p, .etiqueta__cajas span{
     font-family: 'Open Sans',sans-serif;

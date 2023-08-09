@@ -52,16 +52,31 @@ function queueContainer(){
 }
 
 //generarEtiquetas
-function generarEtiquetas(ids,headerData){
-    console.log(ids, headerData)
+function generarEtiquetas(ids,headerData,neveras,cajas){
+    const etiquetasContainer = document.createElement('div')
     const docs = ids.join(', ')
-    console.log(docs);
-    const nuevaEtiqueta =  etiqueta(headerData,ids)
-    return nuevaEtiqueta
+
+    let cajaNevera
+    let totalCajasNeveras = parseInt(neveras) + parseInt(cajas)
+    let contador = 1
+
+    for(let i = 1; i <= neveras; i++){
+        cajaNevera = 'Nevera'
+        const nuevaEtiqueta = etiqueta(headerData,docs,cajaNevera,contador,totalCajasNeveras)
+        etiquetasContainer.innerHTML += nuevaEtiqueta
+        contador += 1
+    }
+    for (let i = 1; i <= cajas; i++){
+        cajaNevera = 'Caja'
+        const nuevaEtiqueta = etiqueta(headerData,docs,cajaNevera,contador,totalCajasNeveras)
+        etiquetasContainer.innerHTML += nuevaEtiqueta
+        contador += 1
+    }
+    return etiquetasContainer
 }
 
 
-function etiqueta(header,docs){
+function etiqueta(header,docs,cajaNevera,contador,total){
     return `
 <div class="etiqueta">
     <section class="etiqueta__header">
@@ -77,10 +92,10 @@ function etiqueta(header,docs){
         <p>${docs}</p>
     </section>
     <section class="etiqueta__cajas">
-        <h1 class="nevera-caja">Nevera</h1>
+        <h1 class="nevera-caja">${cajaNevera}</h1>
         <p>
-            <span class="nevera-caja__desde">1</span> de 
-            <span class="nevera-caja__hasta">5</span>
+            <span class="nevera-caja__desde">${contador}</span> de 
+            <span class="nevera-caja__hasta">${total}</span>
         </p>
     </section>
 </div>`

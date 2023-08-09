@@ -65,23 +65,31 @@ async function alistarEtiquetas(){
     const colaDocs = document.querySelectorAll('.documentoEnCola')
     const mainContainer = document.querySelector('.mainContainer')
     const btnContainer = document.querySelector('.generarEtiquetasBtnContainer')
+    const etiquetasContainer = document.querySelector('.etiquetasContainer')
+    const neveras = document.querySelector('#cantNeveras')
+    const cajas = document.querySelector('#cantCajas')
     const body = document.body
 
-    //remove the elements from the DOM
-    //get the list of IDs of the documents in the queue
-    let Ids = []
-    colaDocs.forEach(doc => {Ids.push(doc.id)})
-
-    mainContainer.classList.toggle('disabled')
-    btnContainer.classList.toggle('disabled')
+    if(neveras.value != 0 || cajas.value != 0){
+        let Ids = []
+        colaDocs.forEach(doc => {Ids.push(doc.id)})
     
-    const etiquetas = generarEtiquetas(Ids,colaHeaderData)
-    console.log(etiquetas);
-    body.innerHTML = etiquetas //al insertar en el body borra el main container, por lo que este desaparece. MODIFICAR!!!
-    window.print()
+        mainContainer.classList.toggle('disabled')
+        btnContainer.classList.toggle('disabled')
+        
+        const etiquetas = generarEtiquetas(Ids,colaHeaderData,neveras.value,cajas.value)
+        etiquetasContainer.appendChild(etiquetas)
+        
+        window.print()
 
-    mainContainer.classList.toggle('disabled')
-    btnContainer.classList.toggle('disabled')
+        etiquetasContainer.innerHTML = ''
+        neveras.value = ''  
+        cajas.value = ''
+        mainContainer.classList.toggle('disabled')
+        btnContainer.classList.toggle('disabled')
+    }else{
+        alert(`Debe seleccionar cantidad de neveras/cajas`)
+    }
 }
 
 
