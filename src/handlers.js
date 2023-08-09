@@ -16,7 +16,7 @@ async function addToQueueHandler(){
         //si el documento existe
         if(documento){
             //se crea un ID para el cliente/domicilio obtenido de la consulta a la API
-            if (docType.value === 'PED'){
+            if (docType.value === 'PED' || docType.value === 'CON'){
                 clienteColaID = `${documento[0][1]}-${documento[0][6]}`
             }else{
                 clienteColaID = `${documento[0][0]}-${documento[0][8]}`

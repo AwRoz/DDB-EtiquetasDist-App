@@ -110,6 +110,9 @@ input[type='radio']{
     border: 1px solid var(--midGray);
     border-radius: 5px;
 }
+.docTypeContainer > *:not(:last-child){
+    border-right: 1px solid var(--midGray);
+}
 .docTypeOption{
     display: flex;
     justify-content: center;
@@ -125,10 +128,6 @@ input[type='radio']{
     background-color: var(--blue);
     color: var(--white);
     box-shadow: inset 0px 0px 8px 9px rgba(0, 0, 0, 0.1);
-}
-.docTypeOption:nth-child(2){
-    border-left: 1px solid var(--midGray);
-    border-right: 1px solid var(--midGray);
 }
 .docTypeOption:hover{
     background-color: var(--darkBlue);
