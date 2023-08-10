@@ -1,4 +1,4 @@
-const mainEndpoint = 'http://localhost:3000/documentos'
+const mainEndpoint = `${process.env.API}${process.env.DOCS_ENDPOINT}`
 
 async function fetchData(apiUrl){
     const res = await fetch(apiUrl)

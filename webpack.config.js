@@ -1,5 +1,5 @@
 const path = require('path')
-const { Chunk } = require('webpack')
+const dotenv = require('dotenv-webpack')
 
 module.exports = {
     entry: {
@@ -11,5 +11,10 @@ module.exports = {
     },
     resolve:{
         extensions: ['.js'] 
-    }
+    },
+    plugins:[
+        new dotenv({
+            path:'./.env'
+        })
+    ]
 }
