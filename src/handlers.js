@@ -27,7 +27,6 @@ async function addToQueueHandler(){
                 if(!clienteDomicilio){
                     const colaHeader = assignClientToQueue(documento[0],docType.value)
                     colaContainer.appendChild(colaHeader)
-                    console.log(docType.value);
                     if(docType.value === 'PED' || docType.value === 'CON'){
                         colaHeaderData.push(documento[0][2])
                         colaHeaderData.push(documento[0][7])
