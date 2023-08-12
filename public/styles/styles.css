@@ -306,6 +306,7 @@ input[type='radio']{
     min-height: 300px;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     gap: 20px;
     padding: 10px;
     margin-bottom: 10px;
@@ -338,6 +339,13 @@ input[type='radio']{
     background-repeat: no-repeat;
     background-size:contain;
 }
+
+.etiqueta__data{
+    border-top:1px dashed var(--darkGray);
+    border-bottom: 1px dashed var(--darkGray);
+    padding: 10px 0 10px 0;
+}
+
 .etiqueta__data h3{
     font-family: 'Open Sans',sans-serif;
     font-size: 1.4rem;
@@ -347,11 +355,12 @@ input[type='radio']{
     font-family: 'Roboto Mono',monospace;
     font-size: 1.4rem;
     font-weight: 700;
+    min-width: 37px;
 }
 .etiqueta__cajas{
     display: flex;
-    flex-direction: column;
-    justify-content: space-around;
+    flex-direction: row;
+    justify-content: space-between;
     align-items: center;
 }
 .etiqueta__cajas p, .etiqueta__cajas span{
