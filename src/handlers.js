@@ -75,8 +75,11 @@ async function alistarEtiquetas(){
     
         mainContainer.classList.toggle('disabled')
         btnContainer.classList.toggle('disabled')
+
+        let totalNeveras = neveras.value || 0
+        let totalCajas = cajas.value || 0
         
-        const etiquetas = generarEtiquetas(Ids,colaHeaderData,neveras.value,cajas.value)
+        const etiquetas = generarEtiquetas(Ids,colaHeaderData,totalNeveras,totalCajas)
         etiquetasContainer.appendChild(etiquetas)
         
         window.print()

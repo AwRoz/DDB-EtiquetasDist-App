@@ -72,6 +72,7 @@ function generarEtiquetas(ids,headerData,neveras,cajas){
         etiquetasContainer.innerHTML += nuevaEtiqueta
         contador += 1
     }
+    
     return etiquetasContainer
 }
 
