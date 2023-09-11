@@ -82,13 +82,15 @@ async function alistarEtiquetas(){
         const etiquetas = generarEtiquetas(Ids,colaHeaderData,totalNeveras,totalCajas)
         etiquetasContainer.appendChild(etiquetas)
         
-        window.print()
-
-        etiquetasContainer.innerHTML = ''
-        neveras.value = ''  
-        cajas.value = ''
-        mainContainer.classList.toggle('disabled')
-        btnContainer.classList.toggle('disabled')
+        setTimeout(function() {
+            window.print();
+            etiquetasContainer.innerHTML = ''
+            neveras.value = ''  
+            cajas.value = ''
+            mainContainer.classList.toggle('disabled')
+            btnContainer.classList.toggle('disabled')
+          }, 500);
+             
     }else{
         alert(`Debe seleccionar cantidad de neveras/cajas`)
     }
