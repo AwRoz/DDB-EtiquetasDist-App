@@ -12,49 +12,55 @@ async function addToQueueHandler(){
     const docType = document.querySelector('.docTypeOption input[type="radio"]:checked')
     
     if(doc.value && docType){
-        //se hace peticion a la API para obtener el documento
-        const documento = await getDocumento(doc.value,docType.value)
-        //si el documento existe
-        if(documento){
-            //se crea un ID para el cliente/domicilio obtenido de la consulta a la API
-            if (docType.value === 'PED' || docType.value === 'CON'){
-                clienteColaID = `${documento[0][1]}-${documento[0][6]}`
-            }else{
-                clienteColaID = `${documento[0][0]}-${documento[0][8]}`
-            }
-            //valida si no hay cliente asignado a la cola o si el cliente/domicilio coincide con el existente
-            if(!clienteDomicilio || clienteDomicilio === clienteColaID){
-                if(!clienteDomicilio){
-                    const colaHeader = assignClientToQueue(documento[0],docType.value)
-                    colaContainer.appendChild(colaHeader)
-                    if(docType.value === 'PED' || docType.value === 'CON'){
-                        colaHeaderData.push(documento[0][2])
-                        colaHeaderData.push(documento[0][7])
-                        colaHeaderData.push(documento[0][8])
-                        colaHeaderData.push(documento[0][9])
-                    }else{
-                        colaHeaderData.push(documento[0][1])
-                        colaHeaderData.push(documento[0][9])
-                        colaHeaderData.push(documento[0][10])
-                        colaHeaderData.push(documento[0][11])
-                    }
-                    const listaDocsContainer = queueContainer()
-                    colaContainer.appendChild(listaDocsContainer)
+        // valida que el documento no haya sido ingresado previamente
+        const repetido = document.getElementById(`${docType.value}/${doc.value}`)
+        if(!repetido){
+            //se hace peticion a la API para obtener el documento
+            const documento = await getDocumento(doc.value,docType.value)
+            //si el documento existe
+            if(documento){
+                //se crea un ID para el cliente/domicilio obtenido de la consulta a la API
+                if (docType.value === 'PED' || docType.value === 'CON'){
+                    clienteColaID = `${documento[0][1]}-${documento[0][6]}`
+                }else{
+                    clienteColaID = `${documento[0][0]}-${documento[0][8]}`
                 }
-                //se agega el nuevo documento a la cola
-                const colaDocsContainer = document.querySelector('.colaDocumentos')
-                const newDoc = createItemQueue(docType.value,doc.value)
-                colaDocsContainer.appendChild(newDoc)
-                //se asigna el cliente/domicilio a la cola
-                clienteDomicilio = clienteColaID
-            }else{
-                alert(`Cliente y/o Direccion del documento ingresado no coincide con el de la cola`)
-            }
-        } 
-        //set to default values
-        docType.checked = false
-        doc.value = ''
-        doc.focus()
+                //valida si no hay cliente asignado a la cola o si el cliente/domicilio coincide con el existente
+                if(!clienteDomicilio || clienteDomicilio === clienteColaID){
+                    if(!clienteDomicilio){
+                        const colaHeader = assignClientToQueue(documento[0],docType.value)
+                        colaContainer.appendChild(colaHeader)
+                        if(docType.value === 'PED' || docType.value === 'CON'){
+                            colaHeaderData.push(documento[0][2])
+                            colaHeaderData.push(documento[0][7])
+                            colaHeaderData.push(documento[0][8])
+                            colaHeaderData.push(documento[0][9])
+                        }else{
+                            colaHeaderData.push(documento[0][1])
+                            colaHeaderData.push(documento[0][9])
+                            colaHeaderData.push(documento[0][10])
+                            colaHeaderData.push(documento[0][11])
+                        }
+                        const listaDocsContainer = queueContainer()
+                        colaContainer.appendChild(listaDocsContainer)
+                    }
+                    //se agega el nuevo documento a la cola
+                    const colaDocsContainer = document.querySelector('.colaDocumentos')
+                    const newDoc = createItemQueue(docType.value,doc.value)
+                    colaDocsContainer.appendChild(newDoc)
+                    //se asigna el cliente/domicilio a la cola
+                    clienteDomicilio = clienteColaID
+                }else{
+                    alert(`Cliente y/o Direccion del documento ingresado no coincide con el de la cola`)
+                }
+            } 
+            //set to default values
+            docType.checked = false
+            doc.value = ''
+            doc.focus()
+        }else{
+            alert(`El documento ya se encuentra en cola.`)
+        }
     }
 }
 
