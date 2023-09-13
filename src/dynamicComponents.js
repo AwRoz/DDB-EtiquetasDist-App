@@ -52,23 +52,29 @@ function queueContainer(){
 }
 
 //generarEtiquetas
-function generarEtiquetas(ids,headerData,neveras,cajas){
+function generarEtiquetas(ids,headerData,neveras,cajas,liquidos){
     const etiquetasContainer = document.createElement('div')
     const docs = ids.join(', ')
 
-    let cajaNevera
-    let totalCajasNeveras = parseInt(neveras) + parseInt(cajas)
+    let tipo
+    let total = parseInt(neveras) + parseInt(cajas) + parseInt(liquidos)
     let contador = 1
 
     for(let i = 1; i <= neveras; i++){
-        cajaNevera = 'Nevera'
-        const nuevaEtiqueta = etiqueta(headerData,docs,cajaNevera,contador,totalCajasNeveras)
+        tipo = 'Nevera'
+        const nuevaEtiqueta = etiqueta(headerData,docs,tipo,contador,total)
         etiquetasContainer.innerHTML += nuevaEtiqueta
         contador += 1
     }
     for (let i = 1; i <= cajas; i++){
-        cajaNevera = 'Caja'
-        const nuevaEtiqueta = etiqueta(headerData,docs,cajaNevera,contador,totalCajasNeveras)
+        tipo = 'Caja'
+        const nuevaEtiqueta = etiqueta(headerData,docs,tipo,contador,total)
+        etiquetasContainer.innerHTML += nuevaEtiqueta
+        contador += 1
+    }
+    for (let i = 1; i <= liquidos; i++){
+        tipo = 'Liquidos'
+        const nuevaEtiqueta = etiqueta(headerData,docs,tipo,contador,total)
         etiquetasContainer.innerHTML += nuevaEtiqueta
         contador += 1
     }
@@ -77,7 +83,7 @@ function generarEtiquetas(ids,headerData,neveras,cajas){
 }
 
 
-function etiqueta(header,docs,cajaNevera,contador,total){
+function etiqueta(header,docs,tipo,contador,total){
     return `
 <div class="etiqueta">
     <section class="etiqueta__header">
@@ -93,7 +99,7 @@ function etiqueta(header,docs,cajaNevera,contador,total){
         <p>${docs}</p>
     </section>
     <section class="etiqueta__cajas">
-        <h1 class="nevera-caja">${cajaNevera}</h1>
+        <h1 class="nevera-caja">${tipo}</h1>
         <p>
             <span class="nevera-caja__desde">${contador}</span> de 
             <span class="nevera-caja__hasta">${total}</span>

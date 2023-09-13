@@ -73,9 +73,10 @@ async function alistarEtiquetas(){
     const etiquetasContainer = document.querySelector('.etiquetasContainer')
     const neveras = document.querySelector('#cantNeveras')
     const cajas = document.querySelector('#cantCajas')
+    const liquidos = document.querySelector('#cantLiquidos')
     const body = document.body
 
-    if(neveras.value != 0 || cajas.value != 0){
+    if(neveras.value != 0 || cajas.value != 0 || liquidos.value !=0){
         let Ids = []
         colaDocs.forEach(doc => {Ids.push(doc.id)})
     
@@ -84,18 +85,20 @@ async function alistarEtiquetas(){
 
         let totalNeveras = neveras.value || 0
         let totalCajas = cajas.value || 0
+        let totalLiquidos = liquidos.value || 0
         
-        const etiquetas = generarEtiquetas(Ids,colaHeaderData,totalNeveras,totalCajas)
+        const etiquetas = generarEtiquetas(Ids,colaHeaderData,totalNeveras,totalCajas,totalLiquidos)
         etiquetasContainer.appendChild(etiquetas)
         
         setTimeout(function() {
             window.print();
             etiquetasContainer.innerHTML = ''
-            neveras.value = ''  
+            neveras.value = '' 
             cajas.value = ''
+            liquidos.value = ''
             mainContainer.classList.toggle('disabled')
             btnContainer.classList.toggle('disabled')
-          }, 500);
+          }, 250);
              
     }else{
         alert(`Debe seleccionar cantidad de neveras/cajas`)
